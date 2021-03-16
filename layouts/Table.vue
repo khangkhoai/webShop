@@ -46,16 +46,10 @@ export default {
   },
   methods:{
     listData(){
-      axios({
-  method: 'GET',
-  url: 'http://localhost:3000/blogs',
-  data: null
-}).then(res =>{
- this.dataBlog = res.data;
-}).catch(err => {
-  console.log(err)
-})
-    }, deleted(){
+      axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.dataBlog = res.data;
+      }).catch(err => {console.log(err)})
+    }, 
+    deleted(){
        axios.delete('http://localhost:3000/blogs')
                 .then(response => {
                     this.dataBlog.splice(id, 4)
