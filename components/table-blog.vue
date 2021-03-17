@@ -1,6 +1,5 @@
 <template>
   <div class="row">
-    
         <table class="table table-bordered">
             <thead class="thead">
                 <tr>
@@ -22,8 +21,8 @@
                     <td>{{blogs.public}}</td>
                     <td></td>
                     <td>{{blogs.data_pubblic}}</td>
-                    <td><a href="">Edit</a></td>
-                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+                    <td><nuxt-link :to="`/${blogs.id}`">Edit</nuxt-link></td>
+                    <td><button type="button" class="btn btn-outline-danger" @click="deletedBlog(blogs.id)">Delete</button></td>
                 </tr>
              </tbody>
         </table>
@@ -44,20 +43,24 @@ export default {
   mounted() {
     this.listData();
   },
+  computed: {
+    
+  },
   methods:{
     listData(){
       axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.dataBlog = res.data;
       }).catch(err => {console.log(err)})
     }, 
-    deleted(){
-       axios.delete('http://localhost:3000/blogs')
+    deletedBlog(blogId){
+       axios.delete('http://localhost:3000/blogs/' + blogId)
                 .then(response => {
-                    this.dataBlog.splice(id, 4)
+                    this.dataBlog.splice((blogId-1), 1)
                 });
                 console.log(this.dataBlog);
     }
   }
 }
+
 </script>
 
 <style>

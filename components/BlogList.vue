@@ -16,9 +16,8 @@
 </template>
 <script>
 import AppHeader from '../components/AppHeader.vue'
-
 import AppMenu from '../components/AppMenu.vue'
-import Table from '../layouts/Table.vue'
+import Table from '../components/table-blog.vue'
 export default {
   name: 'admin',
   components: {
