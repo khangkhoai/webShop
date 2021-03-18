@@ -17,9 +17,9 @@
                 <tr  v-for="blogs in dataBlog" :key="blogs.id">
                     <th scope="row">{{blogs.id}}</th>
                     <td>{{blogs.title}}</td>
-                    <td>2</td>
+                    <td>{{blogs.category}}</td>
                     <td>{{blogs.public}}</td>
-                    <td></td>
+                    <td>{{blogs.position}}</td>
                     <td>{{blogs.data_pubblic}}</td>
                     <td><nuxt-link :to="`/${blogs.id}`">Edit</nuxt-link></td>
                     <td><button type="button" class="btn btn-outline-danger" @click="deletedBlog(blogs.id)">Delete</button></td>
