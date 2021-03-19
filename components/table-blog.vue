@@ -17,52 +17,65 @@
                 <tr  v-for="blogs in dataBlog" :key="blogs.id">
                     <th scope="row">{{blogs.id}}</th>
                     <td>{{blogs.title}}</td>
-                    <td>{{blogs.category}}</td>
+                    <td>{{categories[blogs.category]}}</td>
                     <td>{{blogs.public}}</td>
-                    <td>{{blogs.position}}</td>
+                    <td>{{positions[blogs.position]}}</td>
                     <td>{{blogs.data_pubblic}}</td>
-                    <td><nuxt-link :to="`/${blogs.id}`">Edit</nuxt-link></td>
+                    <td><nuxt-link :to="`/blog/edit/${blogs.id}`">Edit</nuxt-link></td>
                     <td><button type="button" class="btn btn-outline-danger" @click="deletedBlog(blogs.id)">Delete</button></td>
                 </tr>
              </tbody>
-        </table>
-    
+        </table>    
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { CATEGORY } from "../store/constant";
+import { POSITION } from "../store/constant";
 export default {
   components : {
   },
-  data(){
+  props: {
+    dataBlog: {},
+  },
+  data () {
     return {
-      dataBlog : [],
+      CATEGORY,
+      POSITION
     }
   },
   mounted() {
     this.listData();
   },
-  computed: {
-    
+  computed : {
+    categories(){
+      return this.CATEGORY
+    },
+    positions(){
+      return this.POSITION
+    }
   },
   methods:{
     listData(){
-      axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.dataBlog = res.data;
+      axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.dataBlog = res.data; this.result= this.dataBlog
       }).catch(err => {console.log(err)})
     }, 
     deletedBlog(blogId){
-       axios.delete('http://localhost:3000/blogs/' + blogId)
-                .then(response => {
-                    this.dataBlog.splice((blogId-1), 1)
-                });
-                console.log(this.dataBlog);
-    }
+      const index = this.dataBlog.findIndex((element, index) => {
+        if(element.id === blogId) 
+        {
+        return true 
+        }
+      })
+      axios.delete('http://localhost:3000/blogs/' + blogId).then(response => {
+        this.dataBlog.splice((index), 1)
+        });
+      console.log(this.dataBlog);
+    },
   }
 }
-
 </script>
-
 <style>
 
 </style>

@@ -1,16 +1,15 @@
 <template>
-<BlogList></BlogList>
+<BlogSearch></BlogSearch>
 </template>
 
 <script>
-import BlogList from '@/components/BlogList.vue'
+import BlogSearch from '@/components/BlogSearch.vue'
 export default {
     components: {
-        BlogList
+        BlogSearch
     }
 }
 </script>
-
 <style>
 
 </style>

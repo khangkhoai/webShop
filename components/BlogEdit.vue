@@ -40,7 +40,7 @@
                 </p>
                 <p>Vị trí</p>
                 <ul class="list-group list-group-flush">
-                  <li v-for="(post,key) in CONTRY" :key="post" class="list-group-control">
+                  <li v-for="(post,key) in POSITION" :key="post" class="list-group-control">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" :value="key" class="custom-control-input" :id="'check' + key + 1" v-model="dataBlog.position">
                       <label class="custom-control-label" :for=" 'check' + key + 1">{{ post }}</label>
@@ -71,7 +71,8 @@
 import AppHeader from '../components/AppHeader.vue'
 import AppMenu from '../components/AppMenu.vue'
 import Table from '../components/table-blog.vue'
-export const CONTRY = ["Việt Nam", 'Châu Âu', 'Châu Á', 'Châu Mỹ']
+import { CATEGORY } from "../store/constant";
+import { POSITION } from "../store/constant";
 import axios from 'axios'
 export default {
   name: 'edit',
@@ -83,7 +84,8 @@ export default {
   data (){
     return { 
       dataBlog : [],
-      CONTRY,
+      CATEGORY,
+      POSITION,
       form: {
         'title': '',
         'des': '',

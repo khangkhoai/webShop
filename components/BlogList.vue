@@ -6,8 +6,8 @@
             <AppMenu/>
           </div>
           <div class="col-sm-9">
-            <h3>List Blogs</h3>
-            <Table/>
+             <h3>List Blogs</h3>
+      <Table :dataBlog="listBlogs"/>    
           </div>
         
         </div>
@@ -22,9 +22,14 @@ export default {
   name: 'admin',
   components: {
     AppHeader,
-    AppMenu, 
+    AppMenu,
     Table
-  }
+  },
+  data(){
+    return {
+      listBlogs : [],
+    }
+  },
 }
 </script>
 <style scoped>

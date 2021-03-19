@@ -1,12 +1,10 @@
 <template>
-  
         <ul class="list-group" >
-          <li class="list-group-item"><nuxt-link to="/list"><button>List</button></nuxt-link></li>
-          <li class="list-group-item"><nuxt-link to="/new"><button>New</button></nuxt-link></li>
-          <li class="list-group-item"><nuxt-link to="/search"><button>Search</button></nuxt-link></li>
+          <li class="list-group-item"><nuxt-link to="/blog/list"><button>List</button></nuxt-link></li>
+          <li class="list-group-item"><nuxt-link to="/blog/new"><button>New</button></nuxt-link></li>
+          <li class="list-group-item"><nuxt-link to="/blog/search"><button>Search</button></nuxt-link></li>
           <li class="list-group-item"><nuxt-link to=""><button>Edit</button></nuxt-link></li>
         </ul>  
-  
 </template>
 
 <script>
