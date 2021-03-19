@@ -1,16 +1,7 @@
 <template>
     <div>
-        <AppHeader />
-        <div class="row">
-          <div class="col-sm-3">
-            <AppMenu/>
-          </div>
-          <div class="col-sm-9">
-             <h3>List Blogs</h3>
+        <h3>List Blogs</h3>
       <Table :dataBlog="listBlogs"/>    
-          </div>
-        
-        </div>
           
     </div>
 </template>

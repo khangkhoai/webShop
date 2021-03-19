@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <AppHeader />
-        <div class="row">
-          <div class="col-sm-3">
-            <AppMenu/>
-          </div>
-          <div class="col-sm-9">
-            <div class="blogNew">
+  <div class="blogNew">
                 <h3>New Blog</h3>
                 <p v-if="Object.keys(this.errors).length > 0" class="text text-danger">
                   {{ errors.title }}
@@ -62,22 +55,17 @@
                 <button type="button" class="btn btn-success" @click="addBlog" >Success</button>
                 <button type="button" class="btn btn-primary">Primary</button>
             </div>  
-          </div>
-        </div>  
-    </div>
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader.vue'
-import AppMenu from '../components/AppMenu.vue'
+
 
 import axios from 'axios'
 export const CONTRY = ["Việt Nam", 'Châu Âu', 'Châu Á', 'Châu Mỹ']
 export default {
   name: 'new',
   components: {
-    AppHeader,
-    AppMenu, 
+    
     
   },
   data() {

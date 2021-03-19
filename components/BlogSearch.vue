@@ -1,17 +1,9 @@
 <template>
     <div>
-        <AppHeader />
-        <div class="row">
-          <div class="col-sm-3">
-            <AppMenu/>
-          </div>
-          <div class="col-sm-9">
-            <h3>Search Blog</h3><br>
-            <SearchForm @getKeySearch=searchTitle></SearchForm>
-            <br>
-            <Table :dataBlog="result"/>
-          </div>
-        </div> 
+         <h3>Search Blog</h3><br>
+          <SearchForm @getKeySearch=searchTitle></SearchForm>
+          <br>
+          <Table :dataBlog="listBlogs"/>
     </div>
 </template>
 <script>
@@ -19,7 +11,7 @@ import SearchForm from '../components/SearchForm.vue'
 import Table from '../components/table-blog.vue'
 
 export default {
-  name: 'admin',
+   
   data (){
     return {
       dataBlog : [],

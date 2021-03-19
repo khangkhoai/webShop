@@ -37,7 +37,7 @@ export default {
   components : {
   },
   props: {
-    dataBlog: {},
+    dataBlog : Array,
   },
   data () {
     return {
