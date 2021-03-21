@@ -37,7 +37,10 @@ export default {
   components : {
   },
   props: {
-    dataBlog : Array,
+   dataBlog: {
+      type: Array,
+      default: () => [],
+    },
   },
   data () {
     return {

@@ -21,10 +21,8 @@ export default {
   name: 'admin',
   components: {
     AppHeader,
-    AppMenu
-    
-  },
-  
+    AppMenu   
+  }, 
 }
 </script>
 <style scoped>
