@@ -1,2 +1,2 @@
-export const CATEGORY = ["thời sự","kinh doanh","thế giới","thể thao","thời sự","kinh doanh","thế giới","thể thao","thế giới","thể thao","thời sự","thể thao","thể thao","thể thao"]
+export const CATEGORY = ["thời sự","kinh doanh","thế giới","thể thao","thời sự","kinh doanh","thế giới","thời sự","kinh doanh","thế giới","thời sự","kinh doanh","thế giới"]
 export const POSITION = ["Việt Nam", "Châu Á", "Châu Âu", "Châu Mỹ"];

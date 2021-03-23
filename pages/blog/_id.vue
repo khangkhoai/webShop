@@ -3,14 +3,13 @@
 </template>
 
 <script>
-import BlogEdit from '@/components/BlogEdit.vue'
+import BlogEdit from '@/components/blogs/BlogCreateEdit.vue'
+
 export default {
     components: {
         BlogEdit
     }
 }
 </script>
-
 <style>
-
 </style>

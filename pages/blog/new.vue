@@ -1,15 +1,14 @@
 <template>
-<div>
-<BlogCreate></BlogCreate>
-</div>
+    <div>
+        <BlogCreate ></BlogCreate>
+    </div>
 </template>
-
 <script>
-import BlogCreate from '@/components/BlogCreate.vue'
+import BlogCreate from '@/components/blogs/BlogCreateEdit'
 export default {
     components: {
         BlogCreate
-    }
+    },
 }
 </script>
 <style>
