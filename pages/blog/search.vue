@@ -26,12 +26,13 @@ export default {
     },
   methods:{
     listData(){
-      axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.dataBlog = res.data; this.result= this.dataBlog
+      axios({method: 'GET',url: 'http://127.0.0.1:8000/api/blogs/',data: null}).then(res =>{this.dataBlog = res.data; this.result= this.dataBlog
       }).catch(err => {console.log(err)})
     }, 
     searchTitle(keySearch){
-      this.result = keySearch
-      const url = keySearch ? 'http://localhost:3000/blogs?title_like=' + keySearch : 'http://localhost:3000/blogs';
+      
+      console.log(this.result)
+      const url = keySearch ? 'http://127.0.0.1:8000/api/blogs/search/' + keySearch : 'http://127.0.0.1:8000/api/blogs/';
       axios
         .get(url)
         .then((res) => {

@@ -8,7 +8,7 @@
                     <th scope="col">Loại</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Vị trí</th>
-                    <th scope="col">Ngày public</th>
+                    <th scope="col">Ngày</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -19,8 +19,9 @@
                     <td>{{blogs.title}}</td>
                     <td>{{categories[blogs.category]}}</td>
                     <td>{{blogs.public == true ? "public" : "private"}}</td>
-                    <td>{{filterPosition(blogs.position)}}</td>
-                    <td>{{blogs.data_pubblic}}</td>
+                    <!-- <td>{{filterPosition(blogs.position)}}</td> -->
+                    <td></td>
+                    <td>{{blogs.data_public}}</td>
                     <td><nuxt-link :to="`/blog/${blogs.id}`">Edit</nuxt-link></td>
                     <td><button type="button" class="btn btn-outline-danger" @click="deletedBlog(blogs.id)">Delete</button></td>
                 </tr>
@@ -68,19 +69,19 @@ export default {
          return true 
          }
         })
-        axios.delete('http://localhost:3000/blogs/' + blogId).then(response => {
+        axios.delete('http://127.0.0.1:8000/api/blogs/' + blogId).then(response => {
         this.dataBlog.splice((index), 1)
         });
         console.log(this.dataBlog);
       }
     },
-    filterPosition(pos) {
-      return pos
-        .map((item) => {
-          return this.POSITION[item];
-        })
-        .join(",");
-    },
+    // filterPosition(pos) {
+    //   return pos
+    //     .map((item) => {
+    //       return this.POSITION[item];
+    //     })
+    //     .join(",");
+    // },
   }
 }
 </script>

@@ -21,7 +21,7 @@ export default {
   
   methods : {
     listData(){
-      axios({method: 'GET',url: 'http://localhost:3000/blogs',data: null}).then(res =>{this.listBlogs = res.data; 
+      axios({method: 'GET',url: 'http://127.0.0.1:8000/api/blogs/',data: null}).then(res =>{this.listBlogs = res.data; 
       }).catch(err => {console.log(err)})
     }, 
   },

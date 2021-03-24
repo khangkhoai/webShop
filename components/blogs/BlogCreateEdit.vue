@@ -41,13 +41,13 @@
     {{ errors.public }}              
     </p><br>            
     <p>Public</p>            
-    <input type="radio" id="checkbox1" name="yes" :value="true" v-model="dataBlog.public"><label for="checkbox1">Yes</label><br>
-    <input type="radio" id="checkbox2" name="no" :value="false" v-model="dataBlog.public"><label for="checkbox2">No</label><br>
+    <input type="radio" id="checkbox1" name="yes" :value="0" v-model="dataBlog.public"><label for="checkbox1">Yes</label><br>
+    <input type="radio" id="checkbox2" name="no" :value="1" v-model="dataBlog.public"><label for="checkbox2">No</label><br>
     <p v-if="Object.keys(this.errors).length > 0" class="text text-danger">
-    {{ errors.data_pubblic }}
+    {{ errors.data_public }}
     </p>
     <p>Date Public</p>
-    <input type="date" name="" id="" v-model="dataBlog.data_pubblic">
+    <input type="date" name="" id=""  v-model="dataBlog.data_public">
     <br><br><br>
     <button type="button" class="btn btn-success" v-show="ShowAdd" @click="addBlog" >Add</button>
     <button type="button" class="btn btn-success" v-show="showEdit" @click="editBlog(dataBlog.id)" >Edit</button>          
@@ -80,7 +80,7 @@ export default {
             'category' :'',
             'public': '',
             'position': [],
-            'data_pubblic': '',
+            'data_public': '',
           },
           errors : {},
         }
@@ -93,13 +93,13 @@ export default {
         console.log(this.errors);
       } else {
       
-      axios.post('http://localhost:3000/blogs/',this.dataBlog)
+      axios.post('http://127.0.0.1:8000/api/blogs/',this.dataBlog)
       window.location.href = '/blog/list'
       }
     },
     getBlogByID(id) {
       axios
-        .get("http://localhost:3000/blogs/" + id)
+        .get("http://127.0.0.1:8000/api/blogs/" + id)
         .then((res) => (this.dataBlog = res.data));
     },
     editBlog(id){
@@ -108,7 +108,7 @@ export default {
         
         console.log(this.errors);
       } else{
-      axios.put('http://localhost:3000/blogs/' + id,this.dataBlog)
+      axios.put('http://127.0.0.1:8000/api/blogs/' + id,this.dataBlog)
       window.location.href = '/blog/list'
       }
     },
