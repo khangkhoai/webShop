@@ -67,8 +67,8 @@ export default {
   },
   data() {
     return {
-        ShowAdd: true,
-        showEdit: false,
+        ShowAdd: false,
+        showEdit: true,
         CATEGORY,
         POSITION,
           dataBlog: {
@@ -138,8 +138,10 @@ export default {
   mounted() {
     if (this.$route.params.id != null) {
       this.getBlogByID(this.$route.params.id);
+      
       this.showEdit = !this.showEdit;
       this.ShowAdd = !this.ShowAdd;
+      
     }
   },
 }

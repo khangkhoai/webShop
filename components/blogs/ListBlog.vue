@@ -1,32 +1,19 @@
 <template>
-  <div class="row">
-        <table class="table table-bordered">
-            <thead class="thead">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Tin</th>
-                    <th scope="col">Loại</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Vị trí</th>
-                    <th scope="col">Ngày</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-             <tbody>
-                <tr  v-for="(blogs,index) in dataBlog" :key="index">
-                    <th scope="row">{{blogs.id}}</th>
-                    <td>{{blogs.title}}</td>
-                    <td>{{categories[blogs.category]}}</td>
-                    <td>{{blogs.public == true ? "public" : "private"}}</td>
-                    <!-- <td>{{filterPosition(blogs.position)}}</td> -->
-                    <td></td>
-                    <td>{{blogs.data_public}}</td>
-                    <td><nuxt-link :to="`/blog/${blogs.id}`">Edit</nuxt-link></td>
-                    <td><button type="button" class="btn btn-outline-danger" @click="deletedBlog(blogs.id)">Delete</button></td>
-                </tr>
-             </tbody>
-        </table>    
+   <div>
+     <div class="row">
+        <div v-for="(dev, key) in dataBlog" :key="key" class="col-sm-4">
+          <div class="card">
+            <img v-bind:src="'http://127.0.0.1:8000/' + dev.thumb"  alt="" width="1%"
+                height="1%"  class="c-sidebar-brand-full img-fluid w-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ dev.name }}</h5>
+                <p class="card-text">{{ dev.id }}</p>
+                <nuxt-link :to="`/product/${dev.id}`" class="btn btn-primary"> Detail</nuxt-link>
+            </div>
+          </div>
+          <br/>
+        </div>
+      </div>    
   </div>
 </template>
 
@@ -75,13 +62,13 @@ export default {
         console.log(this.dataBlog);
       }
     },
-    // filterPosition(pos) {
-    //   return pos
-    //     .map((item) => {
-    //       return this.POSITION[item];
-    //     })
-    //     .join(",");
-    // },
+    filterPosition(pos) {
+      return pos
+        .map((item) => {
+          return this.POSITION[item];
+        })
+        .join(",");
+    },
   }
 }
 </script>

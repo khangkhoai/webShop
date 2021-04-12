@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h3>List Blogs</h3>
+        <h3>List Product</h3>
       <Table :dataBlog="listBlogs"/>    
-          
+     
     </div>
 </template>
 <script>
@@ -16,17 +16,21 @@ export default {
   data(){
     return {
       listBlogs : [],
+      page: {},
+      currentPage: 1,
     }
   },
   
   methods : {
     listData(){
-      axios({method: 'GET',url: 'http://127.0.0.1:8000/api/blogs/',data: null}).then(res =>{this.listBlogs = res.data; 
+      axios({method: 'GET',url: 'http://127.0.0.1:8000/api/product/',data: null}).then(res =>{this.listBlogs = res.data; 
       }).catch(err => {console.log(err)})
     }, 
+  
   },
   mounted () {
     this.listData();
+   
   },
 }
 </script>

@@ -4,6 +4,7 @@
           <SearchForm @getKeySearch=searchTitle></SearchForm>
           <br>
           <Table :dataBlog="result"/>
+          
     </div>
 </template>
 <script>
@@ -15,24 +16,22 @@ export default {
     return {
       dataBlog : [],
       result : [],
+     
     }
   },
    mounted() {
-    this.listData();
+    
   },
   components: {
     SearchForm,
     Table
     },
   methods:{
-    listData(){
-      axios({method: 'GET',url: 'http://127.0.0.1:8000/api/blogs/',data: null}).then(res =>{this.dataBlog = res.data; this.result= this.dataBlog
-      }).catch(err => {console.log(err)})
-    }, 
+    
     searchTitle(keySearch){
       
       console.log(this.result)
-      const url = keySearch ? 'http://127.0.0.1:8000/api/blogs/search/' + keySearch : 'http://127.0.0.1:8000/api/blogs/';
+      const url =  'http://127.0.0.1:8000/api/blogs/search/' + keySearch;
       axios
         .get(url)
         .then((res) => {
