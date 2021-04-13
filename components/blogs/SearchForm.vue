@@ -1,8 +1,17 @@
 <template>
-    <div>
-    <div>Tiêu đề <input style="width: 80%; margin-left:50px" v-model="keySearch"></div><br>
-    <button type="button" placeholder="Tiêu đề.." class="btn btn-success" @click="getKeySearch()">Search</button><br>
-    </div>
+     <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            v-model="keySearch"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" @click="getKeySearch()">
+
+            Search
+          </button>
+        </form>
 </template>
 
 <script>
@@ -15,6 +24,7 @@ export default {
     methods:{
         getKeySearch(){
             this.$emit('getKeySearch', this.keySearch)
+            console.log(this.keySearch)
         }
     }
 }

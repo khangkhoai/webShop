@@ -1,5 +1,7 @@
 <template>
    <div>
+     <br />
+     <SearchForm @getKeySearch=search></SearchForm><br />
      <div class="row">
         <div v-for="(dev, key) in dataBlog" :key="key" class="col-sm-4">
           <div class="card">
@@ -7,7 +9,7 @@
                 height="1%"  class="c-sidebar-brand-full img-fluid w-100">
             <div class="card-body">
                 <h5 class="card-title">{{ dev.name }}</h5>
-                <p class="card-text">{{ dev.id }}</p>
+                <p class="card-text">{{ dev.price  }} VND</p>
                 <nuxt-link :to="`/product/${dev.id}`" class="btn btn-primary"> Detail</nuxt-link>
             </div>
           </div>
@@ -21,8 +23,10 @@
 import axios from 'axios'
 import { CATEGORY } from "@/store/constant";
 import { POSITION } from "@/store/constant";
+import SearchForm from '@/components/blogs/SearchForm.vue'
 export default {
   components : {
+    SearchForm
   },
   props: {
    dataBlog: {
@@ -62,13 +66,16 @@ export default {
         console.log(this.dataBlog);
       }
     },
-    filterPosition(pos) {
-      return pos
-        .map((item) => {
-          return this.POSITION[item];
-        })
-        .join(",");
-    },
+    search(keySearch){
+      const url =  'http://127.0.0.1:8000/api/product/search/' + keySearch;
+      axios
+        .get(url)
+        .then((res) => {
+          this.dataBlog = res.data;
+        });
+       console.log(this.dataBlog)
+    
+    }
   }
 }
 </script>

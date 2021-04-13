@@ -1,31 +1,59 @@
 <template>
-  <ul class="list-group" >
-  <li class="list-group-item"><nuxt-link to="/blog/list"><button>List</button></nuxt-link></li>
-  <li class="list-group-item"><nuxt-link to="/blog/new"><button>New</button></nuxt-link></li>
-  <li class="list-group-item"><nuxt-link to="/blog/search"><button>Search</button></nuxt-link></li>
-  <li class="list-group-item"><nuxt-link to=""><button>Edit</button></nuxt-link></li>
-  </ul>  
+ 
+    <!-- Section: Categories -->
+    <section>
+      <h5 style="margin-left: 50px;">Categories</h5>
+      <div v-for="(dev, key) in listBlogs" :key="key" >
+        <!-- <p class="mb-3"><a href="" class="card-link-secondary">{{dev.name}}</a></p> -->
+        <li class="list-group-item"><nuxt-link :to="`/product_category/${dev.id}`"><button>{{dev.name}}</button></nuxt-link></li>
+         
+      </div>
+    </section>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-     name : "AppMenu"
+  name: 'AppMenu',
+  data() {
+    return {
+      listBlogs: []
+    }
+  },
+  methods: {
+    getCategories() {
+      axios({
+        method: 'GET',
+        url: 'http://127.0.0.1:8000/api/category/',
+        data: null,
+      })
+        .then((res) => {
+          this.listBlogs = res.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+  },
+  mounted() {
+    this.getCategories()
+  },
 }
 </script>
 
 <style>
-.list-group-item{
- margin-left: 30px;
- margin-right: 20px;
- text-align: center;
+.list-group-item {
+  margin-left: 50px;
+  margin-right: 40px;
+  text-align: center;
 }
-.li button{
-  background-color:white;
+.li button {
+  background-color: white;
   font-weight: bold;
   border: 1px solid black;
   display: block;
 }
-button{
+button {
   background-color: white;
   border: none;
 }
