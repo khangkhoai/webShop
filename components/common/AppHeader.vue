@@ -32,7 +32,7 @@
               <a href="#!" class="nav-link waves-effect"> Contact </a>
             </li>
             <li class="nav-item">
-              <a href="#!" class="nav-link waves-effect"> Sign in </a>
+              <a href="/user/login" class="nav-link waves-effect"> Sign in </a>
             </li>
             <li class="nav-item pl-2 mb-2 mb-md-0">
               <a

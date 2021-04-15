@@ -1,13 +1,13 @@
 <template>
-  <checkout />
+  <login/>
 </template>
 
 <script>
 
-import Checkout from '~/components/carts/Checkout.vue'
+import Login from '~/components/users/Login.vue'
 export default {
     components : {
-        Checkout      
+        Login
     }
 }
 </script>

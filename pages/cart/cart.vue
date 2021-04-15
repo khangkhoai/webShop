@@ -1,5 +1,8 @@
 <template>
-  <!--Section: Block Content-->
+<div class="container" style="margin-top: 35px">
+    <div class="row">
+      <div class="col-md-12">
+         <!--Section: Block Content-->
   <section>
     <!--Grid row-->
     <div class="row">
@@ -79,29 +82,23 @@
       <!--Grid column-->
       <div class="col-lg-4">
         <!-- Card -->
-        <div class="card mb-3">
+        <div class="card mb-3 ">
           <div class="card-body">
             <h5 class="mb-3">The total amount of</h5>
-
             <ul class="list-group list-group-flush">
               <li
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
               >
-                <div>
-                  
-                  <strong>
-                    <p class="mb-0">(including VAT)</p>
-                  </strong>
-                </div>
                 <span
                   ><strong>{{ this.total }} VNĐ</strong></span
                 >
               </li>
             </ul>
-
+            <div style="margin-left:50px">
             <nuxt-link :to="`/cart/checkout`" class="btn btn-primary">
               Checkout</nuxt-link
             >
+            </div>
           </div>
         </div>
         <!-- Card -->
@@ -111,6 +108,9 @@
     <!--Grid row-->
   </section>
   <!--Section: Block Content-->
+      </div>
+    </div>
+</div>
 </template>
 
 <script>

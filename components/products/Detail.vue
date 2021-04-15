@@ -46,7 +46,7 @@
                       v-bind:max="listProducts.amount"
                       name="quantity"
                       value="1"
-                      v-model="cartadd.amount"
+                      v-model="quantity"
                       type="number"
                       
                     />
@@ -83,10 +83,10 @@ export default {
         name: '',
         thumb: '',
         price: '',
-        amount: '1',
+        amount: 1,
       },
       badge: '0',
-      quantity: '1',
+      quantity: 1,
       totalprice: '0',
     }
   },
@@ -109,24 +109,32 @@ export default {
           return total + item.amount*item.price
         }, 0);
         console.log(this.carts);
-        console.log(this.badge);
-        console.log(this.price)
+        // console.log(this.badge);
+        // console.log(this.price)
       }
     },
     addCart(pro) {
+      if((this.carts.map(a=>a.id))==pro.id)
+      {
+        
+        this.carts[0].amount = +this.carts[0].amount  +  +this.quantity
+        console.log(this.carts)
+      }
+      else
+      {
       this.cartadd.id = pro.id;
       this.cartadd.name = pro.name;
       this.cartadd.thumb = pro.thumb;
+      this.cartadd.amount = this.quantity;
       this.cartadd.price = pro.price;
-      
       this.carts.push(this.cartadd);
+      }
       this.cartadd = {};
       this.storeCart();
     },
    
     storeCart() {
-      // if((this.carts.map(a=>a.id)))
-       console.log(localStorage.getItem("id"))
+       
       let parsed = JSON.stringify(this.carts)
       localStorage.setItem('carts', parsed)
       this.viewCart()
