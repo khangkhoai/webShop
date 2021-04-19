@@ -3,7 +3,14 @@
     <br />
     
     <Table :dataBlog="listBlogs" />
-    
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="page.total"
+      :per-page="page.per_page"
+      @page-click="listData"
+      prev-text="Prev"
+      next-text="Next"
+    ></b-pagination>
   </div>
 </template>
 <script>
@@ -21,22 +28,23 @@ export default {
     return {
       listBlogs: [],
       result: [],
+       page: {},
+      currentPage: 1,
     }
   },
 
   methods: {
-    listData() {
+    listData(e, page) {
       axios({
         method: 'GET',
-        url: 'http://127.0.0.1:8000/api/product/',
+        url: 'http://127.0.0.1:8000/api/product?page=' +page,
         data: null,
       })
         .then((res) => {
-          this.listBlogs = res.data
+          this.listBlogs = res.data.data
+          this.page = res.data;
         })
-        .catch((err) => {
-          console.log(err)
-        })
+       
     },
     
   },

@@ -11,56 +11,41 @@
           <section class="mt-4 mb-5">
 
             <form action="#!">
-
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form md-outline mt-0">
-                    <input type="text" id="materialRegisterFormFirstName" class="form-control">
-                    <label for="materialRegisterFormFirstName">First name</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form md-outline mt-0">
-                    <input type="email" id="materialRegisterFormLastName" class="form-control">
-                    <label for="materialRegisterFormLastName">Last name</label>
-                  </div>
-                </div>
-              </div>
-        
               <div class="md-form md-outline mt-0">
-                <input type="email" id="defaultForm-email2" class="form-control">
                 <label data-error="wrong" data-success="right" for="defaultForm-email2">Your email</label>
+                <input type="email" id="defaultForm-email2" class="form-control" v-model="dataForm.email">
+                
               </div>
               <div class="md-form md-outline mt-0">
-                <input type="password" id="defaultForm-pass2" class="form-control">
                 <label data-error="wrong" data-success="right" for="defaultForm-pass2">Your password</label>
+                <input type="password" id="defaultForm-pass2" class="form-control" v-model="dataForm.password">
+                
                 <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                   At least 8 characters and 1 digit
                 </small>
               </div>
-        
+              <div class="md-form md-outline mt-0">
+                <label data-error="wrong" data-success="right" for="defaultForm-email2">Name</label>
+                <input type="name" id="defaultForm-email2" class="form-control" v-model="dataForm.name">
+                
+              </div>
               <div class="md-form md-outline">
-                <input type="number" id="materialRegisterFormPhone" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock">
                 <label for="materialRegisterFormPhone">Phone number</label>
+                <input type="number" id="materialRegisterFormPhone" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" v-model="dataForm.phone">
+                
                 <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-3">
                   Optional - for two step authentication
                 </small>
               </div>
-        
-            </form>
-        
-            <div class="text-center pb-2">
-        
-              <div class="form-check pl-0 mb-3">
-                <input type="checkbox" class="form-check-input filled-in" id="new1">
-                <label class="form-check-label small text-uppercase card-link-secondary" for="new1">Subscribe to our newsletter</label>
+               <div class="md-form md-outline mt-0">
+                <label data-error="wrong" data-success="right" for="defaultForm-email2">Address</label>
+                <input type="address" id="defaultForm-email2" class="form-control" v-model="dataForm.address">
+                
               </div>
-        
-            </div>
-        
+            </form>      
             <div class="text-center mb-2">
         
-              <button type="submit" class="btn btn-primary mb-4 waves-effect waves-light">Sign Up</button>
+              <button type="submit" class="btn btn-primary mb-4 waves-effect waves-light" @click="addProduct()">Sign Up</button>
         
               <hr class="mt-4">
         
@@ -85,8 +70,29 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-
+   data() {
+    return {
+      dataForm: {
+       
+      },
+      
+    };
+  },
+  props: {
+    title: ""
+  },
+  methods: {
+    addProduct() {
+      axios
+        .post("http://127.0.0.1:8000/api/customer/", this.dataForm )
+        .then(res => {
+          this.$router.push("/product");
+        
+        });
+    },
+  }
 }
 </script>
 

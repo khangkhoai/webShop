@@ -36,7 +36,7 @@
             </li>
             <li class="nav-item pl-2 mb-2 mb-md-0">
               <a
-                href="#!"
+                href="/user/sign-up"
                 type="button"
                 class="btn btn-outline-info btn-md btn-rounded btn-navbar waves-effect waves-light"
                 >Sign up</a
