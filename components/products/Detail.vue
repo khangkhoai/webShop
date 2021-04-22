@@ -48,7 +48,6 @@
                       value="1"
                       v-model="quantity"
                       type="number"
-                      
                     />
                     <button
                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
@@ -63,7 +62,11 @@
         <button type="button" class="btn btn-primary btn-md mr-1 mb-2">
           Buy now
         </button>
-        <button type="button" @click="addCart(listProducts)" class="btn btn-light btn-md mr-1 mb-2">
+        <button
+          type="button"
+          @click="addCart(listProducts)"
+          class="btn btn-light btn-md mr-1 mb-2"
+        >
           <i class="fas fa-shopping-cart pr-2"></i>Add to cart
         </button>
       </div>
@@ -103,38 +106,42 @@ export default {
     },
     viewCart() {
       if (localStorage.getItem('carts')) {
-        this.carts = JSON.parse(localStorage.getItem('carts'));
-        this.badge = this.carts.length;
+        this.carts = JSON.parse(localStorage.getItem('carts'))
+        this.badge = this.carts.length
         this.price = this.carts.reduce((total, item) => {
-          return total + item.amount*item.price
-        }, 0);
-        console.log(this.carts);
-        // console.log(this.badge);
-        // console.log(this.price)
+          return total + item.amount * item.price
+        }, 0)
       }
     },
     addCart(pro) {
-      if((this.carts.map(a=>a.id))==pro.id)
-      {
-        
-        this.carts[0].amount = +this.carts[0].amount  +  +this.quantity
-        console.log(this.carts)
+      var items = JSON.parse(localStorage.getItem('carts'))
+      var check = false
+      var position = 0
+      var result = Object.keys(items).map(function (key) {
+        if (items[key].id == pro.id) {
+          check = true
+          position = key
+        }
+      })
+      if (check) {
+        items[position].amount = +items[position].amount + +this.quantity
+        console.log(items)
+        let parsed = JSON.stringify(items)
+        localStorage.setItem('carts', parsed)
+      } else {
+        this.carts = JSON.parse(localStorage.getItem('carts'))
+
+        this.cartadd.id = pro.id
+        this.cartadd.name = pro.name
+        this.cartadd.thumb = pro.thumb
+        this.cartadd.amount = this.quantity
+        this.cartadd.price = pro.price
+        this.carts.push(this.cartadd)
+        this.cartadd = {}
+        this.storeCart()
       }
-      else
-      {
-      this.cartadd.id = pro.id;
-      this.cartadd.name = pro.name;
-      this.cartadd.thumb = pro.thumb;
-      this.cartadd.amount = this.quantity;
-      this.cartadd.price = pro.price;
-      this.carts.push(this.cartadd);
-      }
-      this.cartadd = {};
-      this.storeCart();
     },
-   
     storeCart() {
-       
       let parsed = JSON.stringify(this.carts)
       localStorage.setItem('carts', parsed)
       this.viewCart()

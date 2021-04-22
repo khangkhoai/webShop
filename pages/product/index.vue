@@ -1,7 +1,6 @@
 <template>
   <div>
     <br />
-    
     <Table :dataBlog="listBlogs" />
     <b-pagination
       v-model="currentPage"
@@ -15,14 +14,11 @@
 </template>
 <script>
 import Table from '@/components/blogs/ListBlog.vue'
-
-
 import axios from 'axios'
 export default {
   name: 'admin',
   components: {
     Table,
-   
   },
   data() {
     return {
@@ -32,7 +28,6 @@ export default {
       currentPage: 1,
     }
   },
-
   methods: {
     listData(e, page) {
       axios({
