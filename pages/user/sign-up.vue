@@ -1,20 +1,13 @@
 <template>
-  <signup/>
+  <signup />
 </template>
-
 <script>
-
-
 import Signup from '~/components/users/Signup'
 export default {
-    components : {
-        Signup
-       
-        
-    }
+  components: {
+    Signup,
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

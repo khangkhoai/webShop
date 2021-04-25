@@ -79,11 +79,10 @@ export default {
       axios.post('http://127.0.0.1:8000/api/auth/login-customer/',this.userForm)
        .then((res) => {
           this.customerLogin = res.data
-          // sessionStorage.setItem('id',this.customerLogin.id)
-          // sessionStorage.setItem('name',this.customerLogin.name)
           document.cookie = "id" + "=" + this.customerLogin.id;
           document.cookie = "name" + "=" + this.customerLogin.name;
           console.log(this.customerLogin);
+          this.$router.push("/product");  
         })
         
     },

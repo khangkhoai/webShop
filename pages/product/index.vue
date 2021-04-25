@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import Table from '@/components/blogs/ListBlog.vue'
+import Table from '@/components/products/ListProduct'
 import axios from 'axios'
 export default {
   name: 'admin',
@@ -24,7 +24,7 @@ export default {
     return {
       listBlogs: [],
       result: [],
-       page: {},
+      page: {},
       currentPage: 1,
     }
   },
@@ -32,16 +32,13 @@ export default {
     listData(e, page) {
       axios({
         method: 'GET',
-        url: 'http://127.0.0.1:8000/api/product?page=' +page,
+        url: 'http://127.0.0.1:8000/api/product?page=' + page,
         data: null,
+      }).then((res) => {
+        this.listBlogs = res.data.data
+        this.page = res.data
       })
-        .then((res) => {
-          this.listBlogs = res.data.data
-          this.page = res.data;
-        })
-       
     },
-    
   },
   mounted() {
     this.listData()

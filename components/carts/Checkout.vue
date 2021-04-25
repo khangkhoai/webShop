@@ -141,6 +141,7 @@ export default {
           .post('http://127.0.0.1:8000/api/order_detail/', this.orderDetail)
           .then((res) => {})
       }
+      alert('Dat hang thanh cong')
     },
     viewOrder() {
       axios.get('http://127.0.0.1:8000/api/showOrder').then((res) => {
@@ -148,11 +149,11 @@ export default {
       })
     },
     viewCustomer() {
-      ;(this.cusID = document.cookie
+      (this.cusID = document.cookie
         .split('; ')
         .find((row) => row.startsWith('id='))
         .split('=')[1]),
-        (this.dataForm.customer_id = this.cusID)
+      this.dataForm.customer_id = this.cusID
     },
   },
   mounted() {

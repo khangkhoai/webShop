@@ -104,6 +104,7 @@ export default {
     logout() {
       document.cookie = 'id' + '='
       document.cookie = 'name' + '='
+       this.$router.push("/product");  
     },
   },
   mounted() {

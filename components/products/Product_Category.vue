@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Table from '@/components/blogs/ListBlog.vue'
+import Table from '@/components/products/ListProduct'
 import axios from 'axios'
 export default {
   name: 'admin',
