@@ -38,7 +38,7 @@
             <li v-else-if="this.cusID === ''" class="nav-item">
               <a href="/login" class="nav-link waves-effect"> Sign in </a>
             </li>
-            <li class="nav-item pl-2 mb-2 mb-md-0">
+            <li  v-if="this.cusID === ''" class="nav-item pl-2 mb-2 mb-md-0">
               <a
                 href="/user/sign-up"
                 type="button"
